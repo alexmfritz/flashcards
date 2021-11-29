@@ -7,6 +7,7 @@ describe('Card', function() {
 
   it('should be a function', function() {
     const card = new Card();
+    expect(card).to.be.a.instanceOf(Card);
     expect(Card).to.be.a('function');
   });
 
