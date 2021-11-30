@@ -63,6 +63,18 @@ describe('Turn', () => {
     expect(rightAnswer).to.equal(true);
   });
 
-  
+  it('should be able to give feedback to the player based on their answer', () => {
+    const card = new Card(3, "What type of prototype method directly modifies the existing array?", 
+    ["mutator method", "accessor method", "iteration method"], "mutator method");
+
+    const wrongTurn = new Turn('iteration method', card);
+    const rightTurn = new Turn('mutator method', card);
+
+    const wrongAnswer = wrongTurn.giveFeedback();
+    const rightAnswer = rightTurn.giveFeedback();
+
+    expect(wrongAnswer).to.equal('incorrect!');
+    expect(rightAnswer).to.equal('correct!');
+  });
 
 });
