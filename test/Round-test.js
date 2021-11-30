@@ -95,7 +95,7 @@ describe('Round', () => {
     expect(round.currentCard).to.deep.equal(card5);
   });
 
-  it('should be able to add incorrect guesses', () => {
+  it('should be able to evaluate incorrect guesses and store them', () => {
     const card3 = new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method");
     const card5 = new Card(5, 'What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?', ["mutator method", "accessor method", "iteration method"], 'iteration method');
     const card22 = new Card(22, 'Which prototype method is used to iterate over each property of an object?', ["Object.keys()", "Object.values()", "reduce()"], 'Object.keys()');
@@ -110,6 +110,20 @@ describe('Round', () => {
     expect(round.incorrectGuesses.length).to.deep.equal(2);
   });
 
+  it('should be able to give feedback if correct', () => {
+    const card3 = new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method");
+    const card5 = new Card(5, 'What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?', ["mutator method", "accessor method", "iteration method"], 'iteration method');
+    const card22 = new Card(22, 'Which prototype method is used to iterate over each property of an object?', ["Object.keys()", "Object.values()", "reduce()"], 'Object.keys()');
 
+    const deck = new Deck([card3, card5, card22]);
+
+    const round = new Round(deck);
+
+    const correctAnswer = round.takeTurn('mutator method');
+
+    expect(correctAnswer).to.deep.equal('correct!');
+  });
+
+  
 
 });
