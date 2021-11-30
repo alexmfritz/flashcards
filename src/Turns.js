@@ -4,6 +4,9 @@ class Turn {
     this.currentCard = card;
   }
 
+  returnGuess = () => {
+    return this.guess;
+  }
 }
 
 module.exports = Turn;
