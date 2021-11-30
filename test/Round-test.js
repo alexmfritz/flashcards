@@ -75,10 +75,13 @@ describe('Round', () => {
     const deck = new Deck([card3, card5, card22]);
 
     const round = new Round(deck);
-    
+
+    round.takeTurn('accessor method');
     round.takeTurn('mutator method');
 
-    expect(round.turns).to.deep.equal(1);
+    expect(round.turns).to.deep.equal(2);
   });
+
+  it('should be able to ')
 
 });
