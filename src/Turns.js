@@ -11,6 +11,15 @@ class Turn {
   returnCard = () => {
     return this.currentCard;
   }
+
+  evaluateGuess = () => {
+    switch (this.guess) {
+      case this.currentCard.correctAnswer:
+        return true;
+      default:
+        return false;
+    }
+  }
 }
 
 module.exports = Turn;
