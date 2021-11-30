@@ -4,15 +4,15 @@ class Turn {
     this.currentCard = card;
   }
 
-  returnGuess = () => {
+  returnGuess() {
     return this.guess;
   }
 
-  returnCard = () => {
+  returnCard() {
     return this.currentCard;
   }
 
-  evaluateGuess = () => {
+  evaluateGuess() {
     switch (this.guess) {
       case this.currentCard.correctAnswer:
         return true;
@@ -21,7 +21,7 @@ class Turn {
     }
   }
 
-  giveFeedback = () => {
+  giveFeedback() {
     if (this.evaluateGuess()) {
       return 'correct!';
     }
