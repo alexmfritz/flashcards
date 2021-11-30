@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Turn = require('../src/Turn');
-const Card = require('../src/card');
+const Card = require('../src/Card');
 
 describe('Turn', () => {
 
@@ -14,8 +14,14 @@ describe('Turn', () => {
     const card = new Card(3, "What type of prototype method directly modifies the existing array?", 
     ["mutator method", "accessor method", "iteration method"], "mutator method");
     const turn = new Turn('mutator method', card);
-
     expect(turn.guess).to.equal('mutator method');
+  });
+
+  it('should be able to store the current card', () => {
+    const card = new Card(3, "What type of prototype method directly modifies the existing array?", 
+    ["mutator method", "accessor method", "iteration method"], "mutator method");
+    const turn = new Turn('mutator method', card);
+    expect(turn.currentCard).to.equal(card);
   });
 
 
