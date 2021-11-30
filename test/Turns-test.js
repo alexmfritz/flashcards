@@ -24,6 +24,14 @@ describe('Turn', () => {
     expect(turn.currentCard).to.equal(card);
   });
 
+  it('should be able to return the player\'s guess', () => {
+    const card = new Card(3, "What type of prototype method directly modifies the existing array?", 
+    ["mutator method", "accessor method", "iteration method"], "mutator method");
+    const turn = new Turn('mutator method', card);
+    const returnedGuess = turn.returnGuess();
+    expect(returnedGuess).to.equal('mutator method');
+  });
+
   it('should be able to return the card', () => {
     const card = new Card(3, "What type of prototype method directly modifies the existing array?", 
     ["mutator method", "accessor method", "iteration method"], "mutator method");
