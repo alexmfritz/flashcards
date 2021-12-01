@@ -4,7 +4,6 @@ const Round = require('./Round');
 const Deck = require('./Deck');
 const util = require('./util');
 const data = require('./data');
-const prototypeQuestions = data.prototypeData;
 
 class Game {
   constructor() {
