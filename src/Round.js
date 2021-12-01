@@ -7,6 +7,11 @@ class Round {
     this.incorrectGuesses = [];
     this.currentCard = this.deck.cards[this.turns];
   }
+
+  returnCurrentCard() {
+    return this.currentCard;
+  }
+  
 }
 
 module.exports = Round;
