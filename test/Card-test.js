@@ -6,7 +6,7 @@ describe('Card', () => {
   let card;
 
   beforeEach( () => {
-    card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+    card = new Card(1, 'What are Alex\'s favorite colors?', ['red and yellow', 'blue and green', 'purple and pink'], 'blue and green');
   });
 
   it('should be an instance of Card', () => {
@@ -18,14 +18,14 @@ describe('Card', () => {
   });
 
   it('should store a question', () => {
-    expect(card.question).to.equal('What allows you to define a set of related information using key-value pairs?');
+    expect(card.question).to.equal('What are Alex\'s favorite colors?');
   });  
 
   it('should store a list of possible answers', () => {
-    expect(card.answers).to.deep.equal(['object', 'array', 'function']);
+    expect(card.answers).to.deep.equal(['red and yellow', 'blue and green', 'purple and pink']);
   });  
 
   it('should store the correct answer', () => {
-    expect(card.correctAnswer).to.equal('object');
+    expect(card.correctAnswer).to.equal('blue and green');
   });
 });
