@@ -60,13 +60,14 @@ describe('Round', () => {
 
   it('should be able to show the next card', () => {
     round.takeTurn('mutator method');
+    const returnedCard = round.returnCurrentCard();
 
-    expect(round.currentCard).to.deep.equal(round.currentCard);
+    expect(returnedCard).to.deep.equal(round.currentCard);
   });
 
   it('should be able to evaluate incorrect guesses and store them', () => {
     round.takeTurn('array');
-    round.takeTurn('iteration method');
+    round.takeTurn('object');
 
     expect(round.incorrectGuesses.length).to.deep.equal(2);
   });
@@ -95,11 +96,11 @@ describe('Round', () => {
   });
 
   it('should notify the player when the round is over', () => {
+    round.takeTurn('object');
+    round.takeTurn('array');
     round.takeTurn('mutator method');
-    round.takeTurn('iteration method');
-    round.takeTurn('Object.keys()');
 
     expect(round.turns).to.deep.equal(3);
-    expect(round.endRound()).to.deep.equal('** Round over! ** You answered <>% of the questions correctly');
+    expect(round.endRound()).to.deep.equal('** Round over! ** You answered 100% of the questions correctly');
   });
 });
