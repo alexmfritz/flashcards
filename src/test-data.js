@@ -13,4 +13,13 @@ const testData = [{
   "question": "What month is Alex's birthday in?",
   "answers": ["April", "November", "July"],
   "correctAnswer": "July"
+}, {
+  "id": 4,
+  "question": "What was Alex's first pet's name?",
+  "answers": ["Rusty", "Lauren", "Rebecca"],
+  "correctAnswer": "Lauren"
 }];
+
+module.exports = {
+  testData
+};
