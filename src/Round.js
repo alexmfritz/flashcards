@@ -1,9 +1,9 @@
 const Turn = require('./Turns');
 
-class Turn {
+class Round {
   constructor() {
-    
+
   }
 }
 
-module.exports = Turn;
+module.exports = Round;
