@@ -3,13 +3,14 @@ const expect = chai.expect;
 const Card = require('../src/Card');
 const Deck = require('../src/Deck');
 const Round = require('../src/Round');
-const data = request('../src/data');
+const Turn = require('../src/Turns');
+const data = require('../src/data');
 
 describe('Round', () => {
-  data.prototypeData.forEach(card => cards.push(new Card(card.id, card.question, card.answers, card.correctAnswer)));
   let deck;
   let round;
   let cards = [];
+  data.prototypeData.forEach(card => cards.push(new Card(card.id, card.question, card.answers, card.correctAnswer)));
 
   beforeEach( () => {
 
@@ -29,7 +30,7 @@ describe('Round', () => {
 
   it('should be able to hold a deck of cards', () => {
 
-    expect(round.deck.length).to.equal(30);
+    expect(round.deck.cards.length).to.equal(30);
   });
 
   it('should be able to return the current card', () => {
@@ -51,8 +52,8 @@ describe('Round', () => {
   });
 
   it('should be able to take a turn, updating the turn count', () => {
-    round.takeTurn('accessor method');
-    round.takeTurn('mutator method');
+    round.takeTurn('array');
+    round.takeTurn('function');
 
     expect(round.turns).to.deep.equal(2);
   });
@@ -64,33 +65,33 @@ describe('Round', () => {
   });
 
   it('should be able to evaluate incorrect guesses and store them', () => {
-    round.takeTurn('accessor method');
-    round.takeTurn('mutator method');
+    round.takeTurn('array');
+    round.takeTurn('iteration method');
 
     expect(round.incorrectGuesses.length).to.deep.equal(2);
   });
 
   it('should be able to give feedback if correct', () => {
-    const correctAnswer = round.takeTurn('mutator method');
+    const correctAnswer = round.takeTurn('object');
 
     expect(correctAnswer).to.deep.equal('correct!');
   });
 
   it('should be able to give feedback if incorrect', () => {
-    const wrongAnswer = round.takeTurn('iteration method');
+    const wrongAnswer = round.takeTurn('function');
 
     expect(wrongAnswer).to.deep.equal('incorrect!');
   });
 
   it('should be able to calculate the percentage of correct answers', () => {
-    round.takeTurn('mutator method');
+    round.takeTurn('object');
+    round.takeTurn('function');
+    round.takeTurn('iteration method');
     round.takeTurn('accessor method');
-    round.takeTurn('Object.values()');
-    round.takeTurn('true');
 
-    expect(round.incorrectGuesses).to.deep.equal([5, 9]);
+    expect(round.incorrectGuesses).to.deep.equal([2, 3]);
     expect(round.turns).to.deep.equal(4);
-    expect(round.calculatePercentageCorrect()).to.equal(50)
+    expect(round.calculatePercentageCorrect()).to.deep.equal(50)
   });
 
   it('should notify the player when the round is over', () => {
@@ -99,6 +100,6 @@ describe('Round', () => {
     round.takeTurn('Object.keys()');
 
     expect(round.turns).to.deep.equal(3);
-    expect(round.endRound()).to.equal('** Round over! ** You answered <>% of the questions correctly');
+    expect(round.endRound()).to.deep.equal('** Round over! ** You answered <>% of the questions correctly');
   });
 });
