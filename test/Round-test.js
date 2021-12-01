@@ -155,7 +155,24 @@ describe('Round', () => {
 
     expect(round.incorrectGuesses).to.deep.equal([5, 9]);
     expect(round.turns).to.deep.equal(4);
-    expect(round.calculatePercentageCorrect()).to.deep.equal(50)
+    expect(round.calculatePercentageCorrect()).to.equal(50)
+  });
+
+  it('should notify the player when the round is over', () => {
+    const card3 = new Card(3, "What type of prototype method directly modifies the existing array?", ["mutator method", "accessor method", "iteration method"], "mutator method");
+    const card5 = new Card(5, 'What type of prototype method loops through the existing array and applies a callback function that may mutate each element and return a new value?', ["mutator method", "accessor method", "iteration method"], 'iteration method');
+    const card22 = new Card(22, 'Which prototype method is used to iterate over each property of an object?', ["Object.keys()", "Object.values()", "reduce()"], 'Object.keys()');
+
+    const deck = new Deck([card3, card5, card22]);
+
+    const round = new Round(deck);
+
+    round.takeTurn('mutator method');
+    round.takeTurn('iteration method');
+    round.takeTurn('Object.keys()');
+
+    expect(round.turns).to.deep.equal(3);
+    expect(round.endRound()).to.equal('** Round over! ** You answered <>% of the questions correctly');
   });
 
 });
