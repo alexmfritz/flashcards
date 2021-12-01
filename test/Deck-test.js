@@ -5,9 +5,9 @@ const Card = require('../src/Card');
 const data = require('../src/data');
 
 describe('Deck', () => {
-  data.prototypeData.forEach(card => cards.push(new Card(card.id, card.question, card.answers, card.correctAnswer)));
   let deck;
   let cards = [];
+  data.prototypeData.forEach(card => cards.push(new Card(card.id, card.question, card.answers, card.correctAnswer)));
 
   beforeEach( () => {
 
@@ -21,7 +21,7 @@ describe('Deck', () => {
 
   it('should be able to contain cards', () => {
 
-    expect(deck.cards).to.equal([]);
+    expect(deck.cards.length).to.equal(30);
   });
 
   it('should be able to count how many cards are in the deck', () => {
