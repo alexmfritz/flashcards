@@ -28,6 +28,10 @@ class Round {
     let totalCorrect = this.turns - this.incorrectGuesses.length;
     return (totalCorrect / this.turns) * 100;
   }
+
+  endRound() {
+    return '** Round over! ** You answered <>% of the questions correctly';
+  }
 }
 
 module.exports = Round;
