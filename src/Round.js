@@ -11,7 +11,18 @@ class Round {
   returnCurrentCard() {
     return this.currentCard;
   }
-  
+
+  takeTurn(guess) {
+    this.turns++;
+    this.currentCard = this.deck.cards[this.turns];
+    let turn = new Turn(guess, this.currentCard);
+
+    if (!turn.evaluateGuess()) {
+      this.currentGuesses.push(this.currentCard.id);
+    }
+    
+    return turn.provideFeedback();
+  }
 }
 
 module.exports = Round;
