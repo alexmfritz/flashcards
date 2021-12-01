@@ -13,11 +13,10 @@ class Turn {
   }
 
   evaluateGuess() {
-    switch (this.guess) {
-      case this.currentCard.correctAnswer:
-        return true;
-      default:
-        return false;
+    if (this.guess === this.currentCard.correctAnswer) {
+      return true;
+    } else {
+      return false;
     }
   }
 
