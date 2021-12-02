@@ -8,7 +8,6 @@ const data = require('./data');
 class Game {
   constructor() {
     this.currentRound = undefined;
-
   }
 
   start() {
