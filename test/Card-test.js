@@ -9,6 +9,10 @@ describe('Card', () => {
     card = new Card(1, 'What are Alex\'s favorite colors?', ['red and yellow', 'blue and green', 'purple and pink'], 'blue and green');
   });
 
+  it('should be a function', () => {
+    expect(Card).to.be.a('function');
+  });
+
   it('should be an instance of Card', () => {
     expect(card).to.be.an.instanceof(Card);
   }); 
