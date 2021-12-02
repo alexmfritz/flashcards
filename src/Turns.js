@@ -15,16 +15,15 @@ class Turn {
   evaluateGuess() {
     if (this.guess === this.currentCard.correctAnswer) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
   giveFeedback() {
     if (this.evaluateGuess()) {
       return 'correct!';
     }
-      return 'incorrect!';
+    return 'incorrect!';
   }
 }
 
