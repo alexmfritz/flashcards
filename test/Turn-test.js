@@ -49,17 +49,25 @@ describe('Turn', () => {
 
   it('should be able to evaluate the player\'s guess against the correct answer', () => {
     const rightAnswer = turn1.evaluateGuess();
-    const wrongAnswer = turn2.evaluateGuess();
 
     expect(rightAnswer).to.deep.equal(true);
+  });
+
+  it('should be able to evaluate the player\'s guess against the wrong answer', () => {
+    const wrongAnswer = turn2.evaluateGuess();
+
     expect(wrongAnswer).to.deep.equal(false);
   });
 
-  it('should be able to give feedback to the player based on their answer', () => {
+  it('should be able to give feedback to the player based on the correct answer', () => {
     const rightAnswer = turn1.giveFeedback();
-    const wrongAnswer = turn2.giveFeedback();
 
     expect(rightAnswer).to.deep.equal('correct!');
+  });
+
+  it('should be able to give feedback to the player based on the wrong answer', () => {
+    const wrongAnswer = turn2.giveFeedback();
+
     expect(wrongAnswer).to.deep.equal('incorrect!');
   });
 });
